@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import CreateSessionsService from '../services/CreateSessionsService';
+import { classToClass } from 'class-transformer';
 
 class SessionsContoller {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -9,7 +10,7 @@ class SessionsContoller {
 
     const user = await createSessionsService.execute({ email, password });
 
-    return response.status(200).json(user);
+    return response.status(200).json(classToClass(user));
   }
 }
 
