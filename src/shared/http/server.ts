@@ -33,12 +33,14 @@ app.use(
         status: 'error',
         message: error.message,
       });
-    } else {
-      return response.status(500).json({
-        status: 'error',
-        message: 'Internal server error',
-      });
     }
+
+    console.log(error);
+
+    return response.status(500).json({
+      status: 'error',
+      message: 'Internal server error',
+    });
   },
 );
 
